@@ -1,0 +1,21 @@
+.weather{
+    border-radius: 10px;
+    float: left;
+    width: 180px;
+    height: 150px;
+    margin: 5px;
+    padding: 5px;
+    color: white;
+    background: rgb(9, 102, 243);
+}
+
+hr{
+    background-color:white;
+}
+
+#weathername {
+    background: rgb(9, 102, 243);
+    font-size: 20px;
+    margin: 5px;
+
+}
