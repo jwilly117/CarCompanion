@@ -14,32 +14,40 @@ class Weather extends React.Component{
     state = {
         temp: 0,
         main: "",
-        city: ""
+        city: "",
+        icon: ""
     }
      
-
+    
 
     componentDidMount(){
         this.searchWeather();
+        this.showDate();
+    }
+
+    showDate = () => {
+        let d = new Date();
+        console.log(d);
     }
 
     searchWeather = () => {
         API.search()
+        .then( res => this.setState({
+            temp: res.main.temp,
+            main: res.weather[0].main,
+            city: res.name,
+            icon: "https://openweathermap.org/img/w/" + res.weather[0].icon + ".png"
+        }))
 
-        .then(response => this.setState({temp: response.main.temp,
-             main: response.weather[0].main,
-             city: response.name
-            }))
-         
-        console.log(this.state.city);
-        console.log(this.state.temp)
-        // console.log(this.temp)
+        
+
+
         // console.log(this.state.res.main.temp);
         }
     
 
     render(){
-        
+        // this.searchWeather();
         return (
             <weather className="weather">
     
@@ -48,8 +56,8 @@ class Weather extends React.Component{
     
                      <div id="weathername">
                         <h5>{this.state.city}</h5>
-                        <h6> 73 Degrees F</h6>
-                        <h6> Chance of Rain: 60%</h6>
+                        <h6> {this.state.temp} F </h6>
+                        <h6> {this.state.main}<img src={this.state.icon}></img></h6>
                      </div>
                      
             </weather>

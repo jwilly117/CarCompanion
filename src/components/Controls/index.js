@@ -1,6 +1,7 @@
 //Import both react and the stylesheet from the same folder
 import React from "react";
 import "./style.css";
+import sense from "../../utils/sense";
 const mysql = require('mysql');
 
 // let serialport = require("serialport");
@@ -18,19 +19,16 @@ class Controls extends React.Component {
     right:0
   }
 
-  componentDidMount(){
-
-    // Idk why but this returns some random object
-    fetch('/all', {
-      method: 'GET'
-    }).then (function(response){
-      if(response.status >=400){
-        throw new Error("Bad response from server");
-      }
-      console.log(response)
-      return response;
+  getDistance = () => {
+    sense.showDistance()
+    .then(res => {
+      console.log(res);
     })
+  }
 
+  componentDidMount(){
+    this.getDistance();
+    
   }
     //Camera Input Renders if the user has a camera shared with the browser
     camera = () => {

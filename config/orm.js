@@ -1,5 +1,5 @@
 
-const connection = require('./connection');
+// const connection = require('./connection');
 
 // IMPORTANT TO NOTE: I ONLY USE orm.selectAll() on the web side, the rest is handled by a node server on the 
 // Radio Unit itself
