@@ -19,6 +19,11 @@ function Media() {
 
         </div>
 
+        <div id="bluetooth">
+        
+        
+        </div>
+
         </div>
     );
 }

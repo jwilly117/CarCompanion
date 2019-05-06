@@ -33,10 +33,15 @@
 }
 
 .btn{
-    margin-right: 5px;
-    margin-left:5px;
+    margin-right: 7px;
+    margin-left:7px;
     background-color:  rgb(58, 57, 57);
 
+}
+
+#construction{
+    width:350px;
+    height: 300px;
 }
 
 #video{
@@ -59,6 +64,7 @@
 .modal-body{
     background-color:rgb(196, 196, 196);
     padding:8px;
+    max-height: 400px;
 }
 .modal-footer{
     background-color:rgb(196, 196, 196);

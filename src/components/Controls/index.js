@@ -1,44 +1,38 @@
 //Import both react and the stylesheet from the same folder
 import React from "react";
 import "./style.css";
+const mysql = require('mysql');
+
+// let serialport = require("serialport");
+// let portName = "COM6";
 
 // ================================================================
 //         CONTROLS COMPONENT
 // ================================================================
 
 
-// Need to add some bootstrap controls
-
-
 class Controls extends React.Component {
 
-    hello={
-        message: "hi"
-    };
+  state = {
+    left: 0,
+    right:0
+  }
 
-    handleClick = () => {
-        console.log("Hello there");
-    }
+  componentDidMount(){
 
-    // startCam = () => {
-    //   let
-    //       // context = canvas.getContext('2d'),
-    //       video = document.getElementById('video'),
-    //       vendorUrl = window.URL || window.webkitURL;
+    // Idk why but this returns some random object
+    fetch('/all', {
+      method: 'GET'
+    }).then (function(response){
+      if(response.status >=400){
+        throw new Error("Bad response from server");
+      }
+      console.log(response)
+      return response;
+    })
 
-    //   navigator.getMedia = navigator.getUserMedia ;
-    //   navigator.getMedia({
-    //     video: true,
-    //     audio: false
-
-    //   }, function(stream){
-    //     video.src=stream;
-    //     video.play();
-    // }, function(error){
-    //   //An error has occured
-    // });
-    // }
-    
+  }
+    //Camera Input Renders if the user has a camera shared with the browser
     camera = () => {
       navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia ||
        navigator.mozGetUserMedia || navigator.meGetUserMedia;
@@ -48,6 +42,7 @@ class Controls extends React.Component {
        }
     }
 
+
     handleVideo = (stream) => {
       document.querySelector('#video').srcObject = stream;
     }
@@ -56,10 +51,11 @@ class Controls extends React.Component {
       alert("There is an error");
     }
 
+    //Now to render
 
     render(){
-      // this.startCam();
       this.camera();
+      // this.setup();
         return (
             <div id="controls">  
 
@@ -67,27 +63,40 @@ class Controls extends React.Component {
               <a href="#camera" data-toggle="modal" class="btn btn-dark"> Camera </a>
               <a href="#calendar" data-toggle="modal" class="btn btn-dark"> Calendar </a>
               <a href="#parkAssist" data-toggle="modal" class="btn btn-dark"> Park Assist </a>
-              <a href="#placeholder" data-toggle="modal" class="btn btn-dark"> ~PLACEHOLDER~ </a>
+              <a href="#placeholder" data-toggle="modal" class="btn btn-dark"> Phone </a>
 
 
 
-            {/* MODAL FOR THE DIRECTIONS PANE */}
+            {/* MODAL FOR THE DIRECTIONS PANE /////////////////////////////////////////////////////////////// */}
               <div>
                 <div class="modal fade" id="directions" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-dialog " role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Enter Desired Destination</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
-                    ...
+                    
+                            <form>
+                    <div class="form-group">
+                      <label for="recipient-name" class="col-form-label">Starting Point:</label>
+                      <input type="text" class="form-control" id="recipient-name"></input>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="message-text" class="col-form-label">Destination:</label>
+                      <input class="form-control" id="message-text"></input>
+                    </div>
+
+                  </form>
+
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Go!</button>
                   </div>
                 </div>
               </div>
@@ -96,7 +105,7 @@ class Controls extends React.Component {
             </div> 
 
 
-            {/* MODAL FOR THE CAMERA PANE */}
+            {/* MODAL FOR THE CAMERA PANE ///////////////////////////////////////////////////////////////*/}
             <div>
               <div class="modal fade" id="camera" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog " role="document">
@@ -126,7 +135,7 @@ class Controls extends React.Component {
 
             </div>
 
-            {/* MODAL FOR GOOGLE CALENDAR INTERFACE */}
+            {/* MODAL FOR GOOGLE CALENDAR INTERFACE ///////////////////////////////////////////////////////////////*/}
             <div>
               <div class="modal fade bd-example-modal-lg" id="calendar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
@@ -153,7 +162,7 @@ class Controls extends React.Component {
 
             </div>
 
-            {/* MODAL FOR PARKING ASSISTANT */}
+            {/* MODAL FOR PARKING ASSISTANT /////////////////////////////////////////////////////////////// */}
             <div>
               <div class="modal fade" id="parkAssist" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -169,8 +178,8 @@ class Controls extends React.Component {
                     <div className="container-fluid">
 
                       <div className="row">
-                      <div class="col-md-4" id="left" >Left Sensor</div>
-                      <div class="col-md-4 ml-auto" id="right">Right Sensor</div>
+                      <div class="col-md-4" id="left" >{this.state.left}in</div>
+                      <div class="col-md-4 ml-auto" id="right"> {this.state.right}in </div>
 
                       </div>
                     
@@ -189,20 +198,20 @@ class Controls extends React.Component {
             </div>
 
 
-            {/* MODAL FOR SOMETHIN??? */}
+            {/* MODAL FOR SOMETHING????? /////////////////////////////////////////////////////////////// */}
             <div>
               <div class="modal fade" id="placeholder" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                      <h5 class="modal-title" id="exampleModalCenterTitle">Feature Coming Soon</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
 
                     <div class="modal-body">
-                      ...
+                    <img id="construction" src="https://georgetowner.com/wp-content/uploads/2018/08/under-construction-2408061_640.png" border="0" alt="Image and video hosting by TinyPic"></img>
                     </div>
 
                     <div class="modal-footer">
@@ -217,6 +226,8 @@ class Controls extends React.Component {
 
 
             </div>
+
+            
         );
     }
     

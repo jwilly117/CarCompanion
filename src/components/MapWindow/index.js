@@ -19,9 +19,9 @@ class MapWindow extends Component {
             <div className="map">
               <Map
                google={this.props.google}
-               zoom={14}
+               zoom={12}
                style={style}
-               mapTypeId= "satellite"
+               MapTypeId= "SATELLITE"
                initialCenter={{
                 lat: 33.7490,
                 lng: -84.3880,
