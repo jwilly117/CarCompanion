@@ -7,7 +7,7 @@ const orm = require('../config/orm');
 
 router.get('/all', (req, res) => {
     connection.query('select * from inches', function (error, results){
-        if (error) throw error;
+        if (error) console.log(error); 
         res.send(JSON.stringify(results));
     });
         

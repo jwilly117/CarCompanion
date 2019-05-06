@@ -180,7 +180,7 @@ class Controls extends React.Component {
                       <div className="row">
                       <div class="col-md-4" id="left" >{this.state.left}in</div>
                       <div class="col-md-4 ml-auto" id="right"> {this.state.right}in </div>
-
+                    
                       </div>
                     
                     </div>
