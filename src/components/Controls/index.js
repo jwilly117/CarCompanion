@@ -2,7 +2,7 @@
 import React from "react";
 import "./style.css";
 import sense from "../../utils/sense";
-const mysql = require('mysql');
+import axios from 'axios';
 
 // let serialport = require("serialport");
 // let portName = "COM6";
@@ -20,14 +20,22 @@ class Controls extends React.Component {
   }
 
   getDistance = () => {
-    sense.showDistance()
-    .then(res => {
-      console.log(res);
-    })
+
+    axios.get('/all')
+             .then( res => {
+               console.log(res);
+               this.setState({ left: res.data[0].inches, right: res.data[0].inches2})
+              return res;
+             })
+             .catch( error => {
+               console.log("Error" +error);
+             });
+
   }
 
   componentDidMount(){
-    this.getDistance();
+    setInterval(this.getDistance, 200);
+
     
   }
     //Camera Input Renders if the user has a camera shared with the browser
@@ -52,7 +60,7 @@ class Controls extends React.Component {
     //Now to render
 
     render(){
-      this.camera();
+      // this.camera();
       // this.setup();
         return (
             <div id="controls">  

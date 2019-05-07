@@ -16,6 +16,36 @@ hr{
 #weathername {
     background: rgb(9, 102, 243);
     font-size: 20px;
-    margin: 5px;
+    margin-left: 5px;
+
+}
+
+
+#temperature,
+#mainWeather{
+    font-size:16px;
+    height:24px;
+    margin-left: 8px;
+}
+
+h5{
+    margin: 6px;
+    margin-left: 10px;
+}
+
+hr{
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+img{
+    height: 45px;
+    width: 60px;
+    margin-left: 15px;
+}
+
+#cityName{
+    font-size:20px;
+    margin-left: 7px;
 
 }
