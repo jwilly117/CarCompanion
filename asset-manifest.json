@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/CarCompanion/static/css/main.ed17d071.chunk.css",
+    "main.js": "/CarCompanion/static/js/main.609b13ec.chunk.js",
+    "main.js.map": "/CarCompanion/static/js/main.609b13ec.chunk.js.map",
+    "runtime~main.js": "/CarCompanion/static/js/runtime~main.e2442403.js",
+    "runtime~main.js.map": "/CarCompanion/static/js/runtime~main.e2442403.js.map",
+    "static/js/2.1543f537.chunk.js": "/CarCompanion/static/js/2.1543f537.chunk.js",
+    "static/js/2.1543f537.chunk.js.map": "/CarCompanion/static/js/2.1543f537.chunk.js.map",
+    "index.html": "/CarCompanion/index.html",
+    "precache-manifest.bcf18800fa0d8f7e07f63732a1bc7b4c.js": "/CarCompanion/precache-manifest.bcf18800fa0d8f7e07f63732a1bc7b4c.js",
+    "service-worker.js": "/CarCompanion/service-worker.js",
+    "static/css/main.ed17d071.chunk.css.map": "/CarCompanion/static/css/main.ed17d071.chunk.css.map"
+  }
+}
