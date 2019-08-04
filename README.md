@@ -10,9 +10,7 @@ My goal with this was to test updating a website from physical exterior sensors 
 Some of the features are local weather updates, music interface with music applications, google maps and routes, rear camera views, distance sensors, and a phone interface via blutooth. It is important to remember some of these feature will only be available on the specified hardware. 
 
 ### File Structure
-Since the majority of the functionality of this requires specific hardware, some oe the code, such as that found in the Arduino section, will be unfunctioning without the proprietary hardware hooked to the PC it is running on.
-
-It is also important to note the blutooth functionality of this will only work with the hardware it is installed on. 
+Since the majority of the functionality of this requires specific hardware, some oe the code, such as that found in the Arduino section, will be unfunctioning without the proprietary hardware hooked to the PC it is running on. It is also important to note the blutooth functionality of this will only work with the hardware it is installed on. 
 
 The app, and all of its components were built with react and include the APIs for openweather, google maps, and an embed from spotify. 
 
