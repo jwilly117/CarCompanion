@@ -29,4 +29,4 @@ The first sensors tried were ultrasionic distance sensors designed to measure di
 There is also a spot for a backup camera, which a webapp will pick up any USB based camera and use it once the COM port is opened. 
 
 ### Further Goals of this project
-My future goals for this project are to polish the UI and bring this closer to something that would be a product from a store. 
+My future goals for this project are to polish the UI and bring this closer to something that would be an actual product, although its more of a proof of concept and ability than a real potential product. 
