@@ -22,7 +22,7 @@ Most users will be familiar with the layout and functionality, as it is fairly s
 ### Deployment & Screenshot
 [Link to Deployment](https://jwilly117.github.io/CarCompanion/)
 
-![image](https://cloud.githubusercontent.com/assets/9053854/24495974/fbf2e0cc-1547-11e7-846c-25b5fac7f6b1.png)
+![image](https://imgur.com/hLLBgRb.png)
 
 ### Sensors
 The first sensors tried were ultrasionic distance sensors designed to measure distance based on a ping signal and response time. The idea here is that they would report back a distance to be parking sensors in a way. 
